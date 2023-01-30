@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
 using WebApiControlStock.Data;
+using WebApiControlStock.Filters;
 using WebApiControlStock.Models;
 
 
@@ -21,6 +22,7 @@ namespace WebApiControlStock.Controllers
         }
 
         [HttpGet]
+        [ServiceFilter(typeof(FiltroAccionPersonalizadaAttribute))]
         public ActionResult<IEnumerable<Producto>> Get()
         {
             var autores = context.Productos.Include(x => x.Categoria).ToList();

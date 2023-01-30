@@ -30,7 +30,10 @@ namespace WebApiControlStock
         {
             services.AddDbContext<DBProductosContext>(options => options.UseSqlServer(Configuration.GetConnectionString("KeyDBProductos")));
 
-            services.AddMvc().AddNewtonsoftJson(o => o.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore);
+            services.AddControllers().AddNewtonsoftJson(option =>
+            {
+                option.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore; // con esta linea evitamos el error de referencia circular
+            });
 
             services.AddScoped<FiltroAccionPersonalizadaAttribute>();
 

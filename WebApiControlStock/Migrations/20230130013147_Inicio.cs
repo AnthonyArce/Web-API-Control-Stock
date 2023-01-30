@@ -2,7 +2,7 @@
 
 namespace WebApiControlStock.Migrations
 {
-    public partial class inicio : Migration
+    public partial class Inicio : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -29,7 +29,7 @@ namespace WebApiControlStock.Migrations
                     Nombre = table.Column<string>(type: "varchar(50)", nullable: false),
                     LineaProducto = table.Column<string>(type: "varchar(1)", nullable: false),
                     PrecioDecimal = table.Column<decimal>(type: "money", nullable: false),
-                    CategoriaId = table.Column<int>(nullable: true)
+                    CategoriaId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -39,7 +39,7 @@ namespace WebApiControlStock.Migrations
                         column: x => x.CategoriaId,
                         principalTable: "Categorias",
                         principalColumn: "CategoriaId",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(

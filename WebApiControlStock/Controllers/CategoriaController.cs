@@ -6,6 +6,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using WebApiControlStock.Data;
+using WebApiControlStock.Filters;
 using WebApiControlStock.Models;
 
 namespace WebApiControlStock.Controllers
@@ -22,6 +23,7 @@ namespace WebApiControlStock.Controllers
         }
 
         [HttpGet]
+        [ServiceFilter(typeof(FiltroAccionPersonalizadaAttribute))]
         public ActionResult<IEnumerable<Categoria>> Get()
         {
             var categoria = context.Categorias.ToList();

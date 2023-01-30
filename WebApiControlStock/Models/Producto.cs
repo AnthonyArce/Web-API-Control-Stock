@@ -10,7 +10,7 @@ namespace WebApiControlStock.Models
         public int IdProducto { get; set; }
 
         [Required]
-        [RegularExpression(@"^^[A]{3}\d{3}$", ErrorMessage = "Solo se permiten números entre 1 y 100")]
+        [RegularExpression(@"^[A]{3}\d{3}$", ErrorMessage = "Solo se permiten números entre 1 y 100")]
         [Column(TypeName = "varchar(6)")]
         public string Codigo { get; set; }
 
@@ -28,6 +28,10 @@ namespace WebApiControlStock.Models
         [Precio]
         [Column(TypeName ="money")]
         public decimal PrecioDecimal { get; set; }
+
+        [Required]
+        [Column]
+        public int CategoriaId { get; set; }
 
 
         #region propiedades de navegacion
