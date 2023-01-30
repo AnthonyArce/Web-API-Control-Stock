@@ -10,7 +10,7 @@ namespace WebApiControlStock.Models
         public int IdProducto { get; set; }
 
         [Required]
-        [RegularExpression(@"^[A]{3}\s+[1-100]{3}$", ErrorMessage = "Solo se permiten números entre 1 y 100")]
+        [RegularExpression(@"^^[A]{3}\d{3}$", ErrorMessage = "Solo se permiten números entre 1 y 100")]
         [Column(TypeName = "varchar(6)")]
         public string Codigo { get; set; }
 
